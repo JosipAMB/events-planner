@@ -1,66 +1,116 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Evenementen Planner 
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Een Laravel-applicatie voor het beheren en bekijken van evenementen. Beheerders kunnen evenementen aanmaken via een FilamentPHP dashboard. Bezoekers kunnen aankomende evenementen bekijken en zich aanmelden en afmelden. 
 
-## About Laravel
+ 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Vereisten 
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+PHP 8.2 of hoger 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Composer 
 
-## Learning Laravel
+NPM 
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+SQLite 
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+ 
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Installatie 
 
-## Laravel Sponsors
+1. Bestanden klaarzetten 
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Terminal 
 
-### Premium Partners
+git clone <repository-url> events-planner 
+cd events-planner 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+2. PHP installeren 
 
-## Contributing
+Terminal 
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+composer install 
 
-## Code of Conduct
+3. Omgevingsbestand instellen 
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Terminal 
 
-## Security Vulnerabilities
+cp .env.example .env 
+php artisan key:generate 
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+4. Database aanmaken en migraties uitvoeren 
 
-## License
+Terminal 
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+touch database/database.sqlite 
+php artisan migrate 
+
+5. Frontend installeren 
+
+Terminal 
+
+npm install 
+
+ 
+
+Opstarten 
+
+Gebruik de handige shortcut die alles tegelijk opstart: 
+
+Terminal 
+
+composer run dev 
+
+De applicatie is nu bereikbaar op http://localhost:8000 
+
+ 
+
+Beheerdersaccount aanmaken 
+
+Voor toegang tot het FilamentPHP dashboard maak je een beheerder aan via: 
+
+Terminal 
+
+php artisan make:filament-user 
+
+Het dashboard is bereikbaar op http://localhost:8000/admin 
+
+ 
+
+Wat kan de applicatie? 
+
+Voor bezoekers (http://localhost:8000) 
+
+Aankomende evenementen bekijken 
+
+Zien hoeveel plekken er nog vrij zijn 
+
+Aanmelden met naam en e-mailadres 
+
+Afmelden voor een evenement 
+
+Melding als een evenement vol is 
+
+ 
+
+ 
+
+Voor beheerders (http://localhost:8000/admin) 
+
+Evenementen aanmaken, bewerken en verwijderen 
+
+Aanmeldingen per evenement bekijken 
+
+ 
+
+Technische keuzes 
+
+TALL-stack (TailwindCSS, AlpineJS, Laravel, Livewire) Alle onderdelen van de stack werken goed samen. Livewire zorgt ervoor dat de pagina reageert zonder te herladen, zonder dat je aparte JavaScript bestanden hoeft te schrijven. Dit houdt de code op één plek en makkelijk te onderhouden. 
+
+FilamentPHP Het beheerderspaneel is gebouwd met FilamentPHP. Dit geeft een volledig dashboard met weinig code, waardoor er minder te onderhouden valt. 
+
+SQLite Als database wordt SQLite gebruikt. Dit werkt direct zonder extra installatie, wat het opstarten voor iedereen eenvoudig maakt. 
+
+spotsLeft() in het Model De berekening van beschikbare plekken staat in het Event model. Zo hoeft dit maar op één plek aangepast te worden als er iets verandert. 
+
+ 
