@@ -18,7 +18,7 @@
                         <div>
                             <h2 class="text-xl font-semibold text-gray-800">{{ $event->title }}</h2>
                             <p class="text-sm text-gray-500 mt-1">
-                                {{ $event->start_date->format('d-m-Y H:i') }} &nbsp;|&nbsp;
+                                {{ $event->start_date->format('d-m-Y H:i') }} — {{ $event->location }}
                                 {{ $event->location }}
                             </p>
                             <p class="text-gray-700 mt-3">{{ $event->description }}</p>
